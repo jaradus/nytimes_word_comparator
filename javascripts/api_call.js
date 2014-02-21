@@ -44,6 +44,7 @@ var apiCall = function(year_month_day, year){
     console.log("Ajax data returned")
     var combined_articles = headlineCombiner(data)
     var superlative_data = headlineSuperlativeScore(combined_articles)
+    console.log(all_articles)
     all_articles.push({year: year,
                         data: superlative_data
                       })
@@ -60,18 +61,24 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 50
+  increment: 10
 }
 
-var multiApiCall = function(year_data){
+var multiApiCall = function(year_data, num){
   for (var i=year_data.start_year; i>year_data.end_year; i-=year_data.increment) {
     var year_month_day = i+year_data.month+year_data.day
 
+    // function apiCaller(i) {
+    //     return function () {
+    //         console.log(i)
+    //         var superlative_data = apiCall(year_month_day, i)
+    //     }
+    // }
+
     var superlative_data = apiCall(year_month_day, i)
-    // setTimeout(function(){var superlative_data = apiCall(year_month_day, i)},1000)
+    // setTimeout(apiCaller(i), (num+=year_data.increment * 1000))
 
   }
-
 
 }
 
