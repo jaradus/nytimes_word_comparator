@@ -6,12 +6,11 @@ body {
   font-family: 'Roboto';
 }
 
-
 #viz_container {
   z-index: 1;
 }
 
 #headline_container {
-  background-color: red;
+  height: 50%;
   z-index: 99;
 }

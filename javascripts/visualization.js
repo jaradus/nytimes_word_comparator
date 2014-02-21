@@ -8,9 +8,21 @@ var addVisualization = function(){
         .data(dataset)
         .enter()
         .append("rect")
-        .on("click", function(d,i) {
-          alert(d, i)
-        })
+        .on("mouseover", function(d,i) {
+                                        d3.select(this)
+                                        .style("fill", "#333333")                                      
+                                        // $('#headline_container').html(d.data.original_article.forEach(function(article){
+                                        //                                                                         return article
+                                        //                                                                         console.log(article)
+                                        //                                                                         }))
+                                        $('#headline_container').html(d.data.words)
+                                        
+
+                                        })
+        .on("mouseout", function(d,i) {
+                                        d3.select(this)
+                                        .style("fill", "#000000")
+                                        })
         .attr("x", function(d, i){
           return i * (window.innerWidth / dataset.length) })
         .attr("y", function(d){
