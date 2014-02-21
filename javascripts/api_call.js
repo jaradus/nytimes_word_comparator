@@ -43,11 +43,14 @@ var apiCall = function(year_month_day, year){
   success: function(data){
     console.log("Ajax data returned")
     var combined_article = headlineCombiner(data)
-    console.log(combined_article)
     var superlative_data = headlineSuperlativeScore(combined_article)
     all_articles.push({year: year,
                         data: superlative_data
                       })
+    console.log(all_articles.length)
+    if (all_articles.length == (year_data.start_year-year_data.end_year)/year_data.increment) {
+      addVisualization()
+      }
     }
   })
 }
@@ -56,17 +59,19 @@ var year_data = {
   start_year: year,
   month: month.toString(),
   day: day.toString(),
-  end_year: year_past
+  end_year: year_past,
+  increment: 10
 }
 
 var multiApiCall = function(year_data){
-  for (var i=year_data.start_year; i>year_data.end_year; i-=20) {
+  for (var i=year_data.start_year; i>year_data.end_year; i-=year_data.increment) {
     var year_month_day = i+year_data.month+year_data.day
-    console.log(i)
+
     var superlative_data = apiCall(year_month_day, i)
+    // setTimeout(function(){var superlative_data = apiCall(year_month_day, i)},1000)
+
   }
 }
 
 
-// multiApiCall(year_data)
 
