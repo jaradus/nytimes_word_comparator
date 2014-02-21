@@ -68,15 +68,15 @@ var multiApiCall = function(year_data, num){
   for (var i=year_data.start_year; i>year_data.end_year; i-=year_data.increment) {
     var year_month_day = i+year_data.month+year_data.day
 
-    // function apiCaller(i) {
-    //     return function () {
-    //         console.log(i)
-    //         var superlative_data = apiCall(year_month_day, i)
-    //     }
-    // }
+    function apiCaller(i) {
+        return function () {
+            console.log(i)
+            var superlative_data = apiCall(year_month_day, i)
+        }
+    }
 
-    var superlative_data = apiCall(year_month_day, i)
-    // setTimeout(apiCaller(i), (num+=year_data.increment * 1000))
+    // var superlative_data = apiCall(year_month_day, i)
+    setTimeout(apiCaller(i), (num+=year_data.increment * 1000))
 
   }
 
