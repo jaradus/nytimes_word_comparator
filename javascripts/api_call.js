@@ -21,13 +21,14 @@ var date_past = year_past.toString()+month.toString()+day.toString()
 
 
 var headlineCombiner = function(results) {
-  var combined_article;
+  var combined_articles = [];
   results.response.docs.forEach(function(article) {
     var lead_paragraph = article.lead_paragraph
     var headline = article.headline.main
-    combined_article = headline+" | "+lead_paragraph
+    combined_articles.push(headline+" | "+lead_paragraph)
   })
-  return combined_article
+  return combined_articles
+  console.log(combined_articles)
 }
  
 var all_articles = [];
@@ -42,8 +43,9 @@ var apiCall = function(year_month_day, year){
   dataType: 'json',
   success: function(data){
     console.log("Ajax data returned")
-    var combined_article = headlineCombiner(data)
-    var superlative_data = headlineSuperlativeScore(combined_article)
+    var combined_articles = headlineCombiner(data)
+    var superlative_data = headlineSuperlativeScore(combined_articles)
+    console.log(superlative_data)
     all_articles.push({year: year,
                         data: superlative_data
                       })
@@ -60,7 +62,7 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 20
+  increment: 10
 }
 
 var multiApiCall = function(year_data){

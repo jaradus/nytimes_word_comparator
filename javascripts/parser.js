@@ -1,17 +1,13 @@
-// Test Headlines
-var old_headline1 = "To the Editor of The New York Times: The net profits in 1899 of a certain corporation engaged in the manufacture of steel and iron are said to have exceeded $21,000,000, and they are expected to reach $42,000,000 in the current year, 1900. Concerning that corporation, Mr. Abram S. Hewittt is quoted in your issue of this morning as saying that it makes nearly one-half of the steel manufactured in this country.";
-var old_headline2 = "CHICAGO, Feb. 19. -- 'American securities will not suffer appreciably from the Boer war, no matter what setbacks the British forces may receive,' said Secretary of the Treasury Gage to-day. 'The same, indeed, may be said of English securities. The financial condition of England is recognized by financiers as so Strong that every demand for the prosecution of the war can easily be met.'";
-var new_headline1 = "Vietnam and the United States are close to an agreement allowing Americans to adopt Vietnamese children again, five years after a ban was imposed amid allegations of baby-selling and babies offered without parents' consent, a visiting U.S. senator said.";
-var new_headline2 = "Kellogg Co &lt;K.N.&gt; said 36,000 packages of its Special K Red Berries cereal could contain dangerous glass fragments and have been pulled from the market, the latest in a series of recalls of its popular brands."
-
 // ##################################################################
 // ###  Cleans the headlines into characterless lowercase arrays  ###
 // ##################################################################
 
-var cleanHeadline = function(headline){
+var cleanHeadline = function(combined_articles){
+  var combined_articles_string = combined_articles.join('')
+
   // Removes all non-word characters and downcases the string
-  var scrubbed_string   = headline.toLowerCase().replace(/[^\w\s]/g, '');
-  // Splits the headline into an array
+  var scrubbed_string   = combined_articles_string.toLowerCase().replace(/[^\w\s]/g, '');
+  // Splits the combined_articles into an array
   var headline_in_array = scrubbed_string.split(' ');
 
   return headline_in_array;
@@ -20,16 +16,16 @@ var cleanHeadline = function(headline){
 // ==================================================================
 
 
-// ################################################################
-// ###  Get the count of superlatives included in the headline  ###
-// ################################################################
+// #########################################################################
+// ###  Get the count of superlatives included in the combined articles  ###
+// #########################################################################
 
-var totalSuperlativeCount = function(headline){
+var totalSuperlativeCount = function(combined_articles){
 
-  var getSuperlativeCount = function(headline){
+  var getSuperlativeCount = function(combined_articles){
     // Superlatives that do not end in 'est'
     var superlative_list       = word_bank;
-    var headline_in_array      = cleanHeadline(headline);
+    var headline_in_array      = cleanHeadline(combined_articles);
     var superlative_count      = 0;
     var superlative_word_array = [];
 
@@ -46,14 +42,14 @@ var totalSuperlativeCount = function(headline){
 
   }
 
-  var getEstCount = function(headline){
+  var getEstCount = function(combined_articles){
 
-    var headline_in_array = cleanHeadline(headline);
+    var headline_in_array = cleanHeadline(combined_articles);
 
     var est_count       = 0;
     var est_word_array = [];
 
-    // Iterates through each word in the headline and counts the number of words end with 'est'
+    // Iterates through each word in the combined_articles and counts the number of words end with 'est'
     headline_in_array.forEach(function(word){
       if (word.slice(-3) == "est") {
         est_count += 1;
@@ -78,8 +74,8 @@ var totalSuperlativeCount = function(headline){
   // Where all the above functions get called:
   
   return netCount(
-                  getSuperlativeCount(headline),
-                  getEstCount(headline)
+                  getSuperlativeCount(combined_articles),
+                  getEstCount(combined_articles)
                   );
 
 }
@@ -91,19 +87,20 @@ var totalSuperlativeCount = function(headline){
 // ###  Give the headline a score  ###
 // ###################################
 
-var headlineSuperlativeScore = function(headline){
+var headlineSuperlativeScore = function(combined_articles){
 
-  var superlatives = totalSuperlativeCount(headline);
+  var superlatives = totalSuperlativeCount(combined_articles);
   var number_of_superlatives = superlatives.count;
 
-  var headline_length = cleanHeadline(headline).length;
+  var headline_length = cleanHeadline(combined_articles).length;
 
   var superlative_ratio = (number_of_superlatives/headline_length);
 
   return {
           words: superlatives.words,
           count: superlatives.count,
-          ratio: superlative_ratio
+          ratio: superlative_ratio,
+          original_article: combined_articles
           } 
 
 }
