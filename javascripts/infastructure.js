@@ -18,4 +18,8 @@ $(function(){
               .attr("height", window.innerHeight);
 
   multiApiCall(year_data)
+
 })
+
+
+

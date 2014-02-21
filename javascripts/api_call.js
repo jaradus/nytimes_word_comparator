@@ -60,7 +60,7 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 50
+  increment: 20
 }
 
 var multiApiCall = function(year_data){
@@ -71,6 +71,8 @@ var multiApiCall = function(year_data){
     // setTimeout(function(){var superlative_data = apiCall(year_month_day, i)},1000)
 
   }
+
+  
 }
 
 

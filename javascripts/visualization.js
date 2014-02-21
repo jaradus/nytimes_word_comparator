@@ -8,6 +8,9 @@ var addVisualization = function(){
         .data(dataset)
         .enter()
         .append("rect")
+        .on("click", function(d,i) {
+          alert(d, i)
+        })
         .attr("x", function(d, i){
           return i * (window.innerWidth / dataset.length) })
         .attr("y", function(d){
@@ -15,10 +18,14 @@ var addVisualization = function(){
         .attr("width", function(d){
           return window.innerWidth/dataset.length
         })
+        .attr("height", 0)
+        .style("fill", "black")
+        .transition()
         .attr("height", function(d){
           return d.data.count*bar_height
         })
-        .style("fill", "black")
+        .duration(1000)
+        .ease("bounce")
 
 
   window.canvas.selectAll("text")
