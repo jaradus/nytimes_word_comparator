@@ -29,7 +29,8 @@ var totalSuperlativeCount = function(headline){
   var getSuperlativeCount = function(headline){
 
     // Superlatives that do not end in 'est'
-    var superlative_list       = ['very', 'awesome', 'incredible', 'ever', 'everything', 'heartbreaking'];
+    // var superlative_list       = ['very', 'awesome', 'incredible', 'ever', 'everything', 'heartbreaking'];
+    var superlative_list       = ['very', 'awesome', 'incredible', 'ever', 'everything', 'heartbreaking', 'congress', 'new york', 'budget', 'senate'];
     var headline_in_array      = cleanHeadline(headline);
     var superlative_count      = 0;
     var superlative_word_array = [];
