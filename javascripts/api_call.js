@@ -3,7 +3,7 @@
 
 var rightNow = new Date();
 var year = rightNow.getFullYear()
-var year_span = 100
+var year_span = 10
 var year_past = year - year_span
 var month = rightNow.getMonth()+1
 var day = rightNow.getDate()
@@ -44,6 +44,7 @@ var apiCall = function(year_month_day, year){
     console.log("Ajax data returned")
     var combined_articles = headlineCombiner(data)
     var superlative_data = headlineSuperlativeScore(combined_articles)
+    console.log(all_articles)
     all_articles.push({year: year,
                         data: superlative_data
                       })
@@ -60,18 +61,24 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 50
+  increment: 2
 }
 
-var multiApiCall = function(year_data){
+var multiApiCall = function(year_data, num){
   for (var i=year_data.start_year; i>year_data.end_year; i-=year_data.increment) {
     var year_month_day = i+year_data.month+year_data.day
 
-    var superlative_data = apiCall(year_month_day, i)
-    // setTimeout(function(){var superlative_data = apiCall(year_month_day, i)},1000)
+    function apiCaller(i) {
+        return function () {
+            console.log(i)
+            var superlative_data = apiCall(year_month_day, i)
+        }
+    }
+
+    // var superlative_data = apiCall(year_month_day, i)
+    setTimeout(apiCaller(i), (num+=year_data.increment * 1000))
 
   }
-
 
 }
 

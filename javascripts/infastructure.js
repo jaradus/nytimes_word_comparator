@@ -17,7 +17,7 @@ $(function(){
               .attr("width", window.innerWidth)
               .attr("height", window.innerHeight);
 
-  multiApiCall(year_data)
+  multiApiCall(year_data, 1)
 
 })
 
