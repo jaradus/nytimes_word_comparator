@@ -61,7 +61,7 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 10
+  increment: 50
 }
 
 var multiApiCall = function(year_data, num){

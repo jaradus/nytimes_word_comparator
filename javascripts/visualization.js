@@ -36,7 +36,7 @@ var addVisualization = function(){
                                                                                                                 console.log(article)
                                                                                                                 }))
                                         $('#headline_container').html(d.data.words)
-                                        $('#headline_container').css("color", "#ef4223")
+                                        $('#headline_container').css("color", "#a63b1d")
 
 
                                         })
@@ -75,6 +75,6 @@ var addVisualization = function(){
           return window.innerHeight - margin_bottom + 20})
         .style("fill", "#ef4223")
 
-        d3.select("body").style("background-color", "#33150d");
+        d3.select("body").style("background-color", "black");
         
 }
