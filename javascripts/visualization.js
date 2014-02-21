@@ -1,7 +1,7 @@
 var addVisualization = function(){
   
   var dataset = all_articles.sort(dynamicSort("year"))
-  var bar_height = 40
+  var bar_height = window.innerHeight/80
   var margin_bottom = 50
 
   window.canvas.selectAll("rect")
@@ -34,5 +34,4 @@ var addVisualization = function(){
         .attr("y", function(d){
           return window.innerHeight - margin_bottom + 20})
         
-
 }
