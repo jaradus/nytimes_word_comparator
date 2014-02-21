@@ -25,7 +25,7 @@ var headlineCombiner = function(results) {
   results.response.docs.forEach(function(article) {
     var lead_paragraph = article.lead_paragraph
     var headline = article.headline.main
-    combined_article = lead_paragraph+headline
+    combined_article = headline+" | "+lead_paragraph
   })
   return combined_article
 }
@@ -60,7 +60,7 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 10
+  increment: 20
 }
 
 var multiApiCall = function(year_data){
