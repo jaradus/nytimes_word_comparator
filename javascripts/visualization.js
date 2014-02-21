@@ -8,9 +8,6 @@ var addVisualization = function(){
         .data(dataset)
         .enter()
         .append("rect")
-        .on("click", function(d,i) {
-          alert(d, i)
-        })
         .attr("x", function(d, i){
           return i * (window.innerWidth / dataset.length) })
         .attr("y", function(d){
