@@ -92,8 +92,24 @@ var totalSuperlativeCount = function(headline){
 // ###  Give the headline a score  ###
 // ###################################
 
+var headlineSuperlativeScore = function(headline){
 
+  var superlatives = totalSuperlativeCount(headline);
+  var number_of_superlatives = superlatives.count;
 
+  var headline_length = cleanHeadline(headline).length;
+
+  var superlative_ratio = (number_of_superlatives/headline_length);
+
+  return {
+          words: superlatives.words,
+          count: superlatives.count,
+          ratio: superlative_ratio
+          } 
+
+}
+
+// ===================================
 
 
 
