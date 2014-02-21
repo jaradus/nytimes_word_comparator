@@ -60,7 +60,7 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 20
+  increment: 50
 }
 
 var multiApiCall = function(year_data){
@@ -72,7 +72,7 @@ var multiApiCall = function(year_data){
 
   }
 
-  
+
 }
 
 
