@@ -57,7 +57,7 @@ var totalSuperlativeCount = function(headline){
     // Iterates through each word in the headline and counts the number of words end with 'est'
     headline_in_array.forEach(function(word){
       if (word.slice(-3) == "est") {
-        est_list += 1;
+        est_count += 1;
         est_word_array.push(word);
       }
     })
@@ -66,13 +66,14 @@ var totalSuperlativeCount = function(headline){
 
   }
 
-  var netCount = function(superlative_count, est_count){
-    var all_superlatives = {};
+  var netCount = function(get_superlative_count, get_est_count){
+    var all_superlatives = [];
 
-    var total_number_of_superlatives = superlative_count.numberOfSuperlativeWords + est_count.numberOfEstWords;
-    all_superlatives.push(superlative_count.superlativeWordList).push(est_count.estWordList);
+    var total_number_of_superlatives = get_superlative_count.numberOfSuperlativeWords + get_est_count.numberOfEstWords;
 
-    return {'words': all_superlatives, 'count': total_number_of_superlatives};
+    var superlative_word_list = all_superlatives.concat(get_superlative_count.superlativeWordList).concat(get_est_count.estWordList);
+
+    return {'words': superlative_word_list, 'count': total_number_of_superlatives};
   }
 
   // Where all the above functions get called:
