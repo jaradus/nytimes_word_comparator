@@ -33,7 +33,8 @@ var totalSuperlativeCount = function(combined_articles){
       headline_in_array.forEach(function(headline_word){
         if (headline_word == superlative) {
           superlative_count += 1;
-          superlative_word_array.push(headline_word);
+          superlative_word_array.push(headline_word+" ");
+          //ADDED SPACES
         }
       })
     })
