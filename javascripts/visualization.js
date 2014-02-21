@@ -5,7 +5,7 @@
 
 var addVisualization = function(){
   
-  var bar_height = 40
+  var bar_height = window.innerHeight/80
   var margin_bottom = 50
 
   window.canvas.selectAll("rect")
@@ -39,7 +39,7 @@ var addVisualization = function(){
           return window.innerHeight - margin_bottom + 20})
         
 
-
+  
 
 
 
