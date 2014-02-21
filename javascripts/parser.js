@@ -38,7 +38,7 @@ var totalSuperlativeCount = function(combined_articles){
       })
     })
 
-    return {'numberOfSuperlativeWords': superlative_count, 'superlativeWordList': superlative_word_array};
+    return {'totalNumberOfWords': headline_in_array.length, 'numberOfSuperlativeWords': superlative_count, 'superlativeWordList': superlative_word_array};
 
   }
 
@@ -68,7 +68,7 @@ var totalSuperlativeCount = function(combined_articles){
 
     var superlative_word_list = all_superlatives.concat(get_superlative_count.superlativeWordList).concat(get_est_count.estWordList);
 
-    return {'words': superlative_word_list, 'count': total_number_of_superlatives};
+    return {'article_word_count': get_superlative_count.totalNumberOfWords, 'words': superlative_word_list, 'count': total_number_of_superlatives};
   }
 
   // Where all the above functions get called:
@@ -100,7 +100,8 @@ var headlineSuperlativeScore = function(combined_articles){
           words: superlatives.words,
           count: superlatives.count,
           ratio: superlative_ratio,
-          original_article: combined_articles
+          original_article: combined_articles,
+          'article_word_count': superlatives.article_word_count
           } 
 
 }

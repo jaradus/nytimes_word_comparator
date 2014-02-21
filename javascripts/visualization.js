@@ -11,12 +11,11 @@ var addVisualization = function(){
         .on("mouseover", function(d,i) {
                                         d3.select(this)
                                         .style("fill", "#333333")                                      
-                                        // $('#headline_container').html(d.data.original_article.forEach(function(article){
-                                        //                                                                         return article
-                                        //                                                                         console.log(article)
-                                        //                                                                         }))
-                                        $('#headline_container').html(d.data.words)
-                                        
+                                        $('#headline_container').html(d.data.original_article.forEach(function(article){
+                                                                                                                console.log(article)
+                                                                                                                }))
+                                        // $('#headline_container').html(d.data.words)
+
 
                                         })
         .on("mouseout", function(d,i) {
