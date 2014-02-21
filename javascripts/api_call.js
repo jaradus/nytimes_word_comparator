@@ -3,7 +3,7 @@
 
 var rightNow = new Date();
 var year = rightNow.getFullYear()
-var year_span = 10
+var year_span = 100
 var year_past = year - year_span
 var month = rightNow.getMonth()+1
 var day = rightNow.getDate()
@@ -61,22 +61,22 @@ var year_data = {
   month: month.toString(),
   day: day.toString(),
   end_year: year_past,
-  increment: 2
+  increment: 10
 }
 
 var multiApiCall = function(year_data, num){
   for (var i=year_data.start_year; i>year_data.end_year; i-=year_data.increment) {
     var year_month_day = i+year_data.month+year_data.day
 
-    function apiCaller(i) {
-        return function () {
-            console.log(i)
-            var superlative_data = apiCall(year_month_day, i)
-        }
-    }
+    // function apiCaller(i) {
+    //     return function () {
+    //         console.log(i)
+    //         var superlative_data = apiCall(year_month_day, i)
+    //     }
+    // }
 
-    // var superlative_data = apiCall(year_month_day, i)
-    setTimeout(apiCaller(i), (num+=year_data.increment * 1000))
+    var superlative_data = apiCall(year_month_day, i)
+    // setTimeout(apiCaller(i), (num+=year_data.increment * 1000))
 
   }
 
