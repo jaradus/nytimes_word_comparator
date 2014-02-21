@@ -28,7 +28,6 @@ var headlineCombiner = function(results) {
     combined_articles.push(headline+" | "+lead_paragraph)
   })
   return combined_articles
-  console.log(combined_articles)
 }
  
 var all_articles = [];
@@ -45,12 +44,11 @@ var apiCall = function(year_month_day, year){
     console.log("Ajax data returned")
     var combined_articles = headlineCombiner(data)
     var superlative_data = headlineSuperlativeScore(combined_articles)
-    console.log(superlative_data)
     all_articles.push({year: year,
                         data: superlative_data
                       })
-    console.log(all_articles.length)
     if (all_articles.length == (year_data.start_year-year_data.end_year)/year_data.increment) {
+      console.log(all_articles.sort(dynamicSort("year")))
       addVisualization()
       }
     }
